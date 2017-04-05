@@ -1,0 +1,37 @@
+<title>Movie Store</title>
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+        <a class="navbar-brand" href=".">Movie Store</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <%if signed_in?%>
+            <li>
+              <%= link_to cart_path do%>
+                <i class="fi-shopping-cart"></i> My Cart (<span class="cart-count"><%=current_user.cart_count%></span>)
+              <%end%>
+            </li>
+            <li><%=link_to current_user.email, edit_user_registration_path%></li>
+            <li><%=link_to "Logout", destroy_user_session_path, method: :delete%></li>
+          <%else%>
+            <li><%=link_to "Register", new_user_registration_path%></li>
+            <li><%=link_to "Login", new_user_session_path%></li>
+          <%end%>
+
+          <li>
+            <div class="navbar-search">
+              <div class="large-8 small-9 columns">
+                <input type="text" class="radius-ls expand" placeholder="Find Movie">
+              </div>
+              <div class="large-4 small-5 columns">
+                <a href="#" class=" radius-rs button">Search</a>
+              </div>
+            </div>
+          </li>
+
+
+        </ul>
+      </div>
+    </div>
+  </div>
